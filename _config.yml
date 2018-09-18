@@ -1,11 +1,11 @@
 # Site settings
 author: Kevin Akhlaghi
-title: 
+title: Code with Kev
 header-img: img/home-bg.png
 email: kevin.akhlaghi@gmail.com
 copyright_name: Kevin Akhlaghi
 description: > # this means to ignore newlines until "baseurl:"
-  
+  the digital life through my lens.
 baseurl: "" # the subpath of your site, e.g. /blog
 twitter_username: 
 github_username:  kakhlaghi
