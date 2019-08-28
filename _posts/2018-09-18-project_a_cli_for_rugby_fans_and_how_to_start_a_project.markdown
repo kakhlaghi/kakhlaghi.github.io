@@ -25,27 +25,26 @@ Instead of immediately jumping into coding and writing what I already knew how t
 **Factor 1: What do I want this to do?**
 
 Like I said, I wanted this to display the current All Blacks info for each player... yeah... but what does that mean?
-I opened up a .txt document and started typing a sort of "table of contents" for my code:
+I opened up a `.txt` document and started typing a sort of "table of contents" for my code:
 
 Run Program
-  * Greeting because it's nice
-					    * Main Menu
-							  * "List"  lists the full roster scrapped from webpage
-							  * "Help"  describe program and give brief instructions
-							  * "Quit"  exit the program
+* Greeting because it's nice
+* Main Menu
+	* "List"  lists the full roster scrapped from webpage
+	* "Help"  describe program and give brief instructions
+	* "Quit"  exit the program
+
+* "List"
+	* Full roster  scrape from webpage
+	* Player info menu  scrape from webpage
+	* For chosen player: display player information, methods to store and display the information in a cohesive manner
+Return to Main Menu: Rinse and Repeat!
 							
-							* "List"
-							  * Full roster  scrape from webpage
-							  * Player info menu  scrape from webpage
-							  *For chosen player: display player information, methods to store and display the information in a cohesive manner
-				
-							Return to Main Menu: Rinse and Repeat!
-							
-	The goal here wasn't to write out all of my code before testing it. It was to simply help me keep my project organized. The lines of definitions, methods, classes, if statements, all of the actual code can get removed from a project
-							
-	This is what I wanted to happen when a user used my gem. This list was my basic guide for the rest of my project. Each bullet point was a goal-filled with potential mini-goals. Now to coding!
-	
-	Lesson Learned: having a simple outline to refer to might seem tedious and unnecessary, but boy-howdy does it help.
+The goal here wasn't to write out all of my code before testing it. It was to simply help me keep my project organized. The lines of definitions, methods, classes, if statements, all of the actual code can get removed from a project
+						
+This is what I wanted to happen when a user used my gem. This list was my basic guide for the rest of my project. Each bullet point was a goal-filled with potential mini-goals. Now to coding!
+
+Lesson Learned: having a simple outline to refer to might seem tedious and unnecessary, but boy-howdy does it help.
 	
 **Factor 2: Starting the code**
 
@@ -60,7 +59,7 @@ Then came the actual doings of the code... let's take my "List" objective from e
 
 I considered what information I wanted to gather for each player and how I wanted to store it. Each player would have its own unique value belonging to the attributes were of the same category across player (e.g. every player has a name and a profile page): this I could do with a hash. This also meant that each player had multiple things that needed to be assigned to one container... an array of hashes. For "List" it would look like this:
 
-[ {:name => "guy1", :position => "guy1's profile url"}, {:name => "guy2", :position => "guy2's profile url"}] and so on.
+`[ {:name => "guy1", :position => "guy1's profile url"}, {:name => "guy2", :position => "guy2's profile url"}]` and so on.
 
 So now I had my list of players. I could display the names of all of them now. Instead of shoving the whole hash out of there. I thought to take the hash and ".send" it to my organizer class to transform it to an array with the information I wanted. I ended up making this how the organized class was initialized because this was the main proponent of that class. Each name of a player represented not only the value of the name, but also where I would assign the other 
 
