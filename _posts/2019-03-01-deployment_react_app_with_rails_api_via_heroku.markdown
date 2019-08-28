@@ -6,13 +6,13 @@ permalink:  deployment_react_app_with_rails_api_via_heroku
 ---
 
 
-Allright, let's be real, while having your projects available to be cloned on github is nice, there is something better: Deploying the projects and having a URL with which you can access the project. 
+Alright, let's be real, while having your projects available to be cloned on github is nice, there is something better: Deploying the projects and having a URL with which you can access the project. 
 
-There are multiple services that you can use with free and paid plans. AWS (Amazon Web Service) and Heroku are very popular choices for their ease and affordabilty. Both of these services have their pitfalls and their perks. This post will cover my app deployment through Heroku specifically. The app is called Idea-Me and is made of a React/Redux Front-end with Rails Api Back-end.
+There are multiple services that you can use with free and paid plans. AWS (Amazon Web Service) and Heroku are very popular choices for their ease and affordabilty. Both of these services have their pitfalls and their perks. This post will cover my app deployment through Heroku specifically. The app is called Idea-Me and is made of a React/Redux Front-end with Rails API Back-end.
 
 **But... Like... What is Heroku?**
 
-Heroku is one of the first cloud PaaS (platform as a service). It started off supporting Ruby exclusively in 2007. Now it supports multiple languages and is considered a polygot platform. It pretty much can handle everything you use for web apps and it keeps the manner in which you deploy fairly similar accross languages.
+Heroku is one of the first cloud PaaS (platform as a service). It started off supporting Ruby exclusively in 2007. Now it supports multiple languages and is considered a polyglot platform. It pretty much can handle everything you use for web apps and it keeps the manner in which you deploy fairly similar accross languages.
 
 Signing up as simple as signing up for most other services, so I will leave that to you... Once you have an account you'll be able to deploy.
 
@@ -28,11 +28,9 @@ The biggest the task for me and rails deployment was making sure I am using Post
 
 Changing the database is outlined on the getting started page and can be reduced to:
 
--changing the gems ```gem 'sqlite3'``` to ```gem 'pg'```. Bundle install!
-
--adding the postgresql adapter to the config/database.yml page under default. The getting started page has a great example that I copy&pasted. I went back and changed the name of the database on the appropriate lines to one that I created in psql for the purposes of this app and added a ```host: localhost``` line to the test and development areas. Rake db:reset or rake db:migrate your new database. 
-
--specify your ruby version. This can be weird using rvm. I was using ruby 2.3.6 but Heroku wants a more recent version or it will not build. I changed the gemfile to specify ruby 2.5.3, installed it, but it gave me some error saying that I was using 2.3.6 and specified 2.5.3... right... this is a rvm thing. Basically you can use ```rvm use 2.5.3``` in terminal to tell the app what to use.
+- Changing the gems `gem 'sqlite3'` to `gem 'pg'`. Bundle install!
+- Adding the postgresql adapter to the `config/database.yml` page under `default`. The getting started page has a great example that I copy&pasted. I went back and changed the name of the database on the appropriate lines to one that I created in psql for the purposes of this app and added a `host: localhost` line to the test and development areas. `rake db:reset` or `rake db:migrate` your new database. 
+- Specify your ruby version. This can be weird using `rvm`. I was using ruby 2.3.6 but Heroku wants a more recent version or it will not build. I changed the gemfile to specify ruby 2.5.3, installed it, but it gave me some error saying that I was using 2.3.6 and specified 2.5.3... right... this is a rvm thing. Basically you can use `rvm use 2.5.3` in terminal to tell the app what to use.
 
 At this point you're pretty much ready to "create an app" on Heroku.
 
@@ -44,20 +42,17 @@ Look there will be errors that you'll face that I won't go over... mainly becaus
 
 Simply put, there are a few minor things to change. For one of them I had to use the CLI.
 
-1) ```heroku keys:add``` this adds an SSH key to heroku for you. (this needed the CLI)
-
-2) add: 
-```"engines": {
-    "node": "7.8.0",
-    "npm": "4.2.0"
-  }```
-	
-3) add: ```"react-scripts": "1.0.7"```
-
-4) change all the RESTful calls to the backend that is now on Heroku: http://exampleapi.herokuapp.com 
-
-
-5) add the app/push the changes
+1. `heroku keys:add` this adds an SSH key to heroku for you. (this needed the CLI)
+2. Add: 
+```
+"engines": {
+  "node": "7.8.0",
+  "npm": "4.2.0"
+}
+```
+3. Add: `"react-scripts": "1.0.7"`
+4. Change all the RESTful calls to the backend that is now on Heroku: `http://exampleapi.herokuapp.com` 
+5. Add the app/push the changes
 
 <iframe src="https://giphy.com/embed/bIyQjsWT2DFfO" width="240" height="159" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/plackers-bIyQjsWT2DFfO">via GIPHY</a></p>
 

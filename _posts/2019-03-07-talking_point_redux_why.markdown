@@ -18,15 +18,17 @@ For example, look at your facebook home page... notice all those little versions
 (talk about complicated umbrella relationships)
 
 **The Redux Way**
-Redux provides a way to give every component direct access to the data by providing a store. The store... stores... the data. You use the redux [connect](https://react-redux.js.org/api/connect) function to bring that data from the store to the component of your choice. If that wording seems a bit odd... it's for a reason. The component is clueless about redux. What happens is a function called mapStateToProps grabs the data of your choice from the store (provided it is in the store) and maps that state based data to the props. Lastly, the connect function connects that mapStateToProps data to the component.
+Redux provides a way to give every component direct access to the data by providing a store. The store... stores... the data. You use the redux [connect](https://react-redux.js.org/api/connect) function to bring that data from the store to the component of your choice. If that wording seems a bit odd... it's for a reason. The component is clueless about redux. What happens is a function called `mapStateToProps` grabs the data of your choice from the store (provided it is in the store) and maps that state based data to the props. Lastly, the connect function connects that `mapStateToProps` data to the component.
 
-example mapStateToProps:
+example `mapStateToProps`:
 
-``` mapStateToProps=(state)=>({
+``` 
+mapStateToProps=(state)=>({
    data: state.dataChoice
 })
 
-export default connect(mapStateToProps)(Component) ```
+export default connect(mapStateToProps)(Component) 
+```
 
 This is a very basic basic example, so see if you can plug an play your own variables!
 

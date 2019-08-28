@@ -29,40 +29,44 @@ Now that the view has all of this data loaded in, we have the code that displays
 Here is an example"
 
 Example of a view:
-```<h2>The simple place to let people know what you can cook</h2>
+```
+<h2>The simple place to let people know what you can cook</h2>
 
-  <% if logged_in? %>
+<% if logged_in? %>
 
-     <p>Welcome, <%=current_user.username%></p><br>
-     <a href="/dishes/new"> Create Dish </a>
-     <a href="/chefs/<%=current_user.slug%>">View your dishes!</a>
+  <p>Welcome, <%=current_user.username%></p><br>
+  <a href="/dishes/new"> Create Dish </a>
+  <a href="/chefs/<%=current_user.slug%>">View your dishes!</a>
 
-   <% else %>
-    <h2>Welcome, New User</h2>
-     <a href="/signup">Sign Up</a>
-     <a href="/login"> Sign In </a>
-   <%end %>```
-	 
-	 Example of a route in a controller
-	 
-	 ```get '/signup' do
-    if !logged_in?
-      erb :'chefs/create_chef'
-    else
-      redirect to '/dishes'
-    end
-  end```
+<% else %>
+<h2>Welcome, New User</h2>
+  <a href="/signup">Sign Up</a>
+  <a href="/login"> Sign In </a>
+<%end %>
+```
+  
+Example of a route in a controller
+  
+```
+get '/signup' do
+  if !logged_in?
+    erb :'chefs/create_chef'
+  else
+    redirect to '/dishes'
+  end
+end
+```
 	
-	the example of the view I provided is from a home page or view. If we look at the line ``` <a href="/signup">Sign Up</a>``` navigates to	```get '/signup' do```... so we have one view calling the route method get '/signup'. Get in this case means that we are going to display something at 'https://www.someaddress/signup'. What are we displaying? The signup page. This is represented by another view chefs/create_chef. By calling erb on that address we are saying go do this view, and bring with it any instantiated data from the controller route/action. So, for example, if we put @dishes = Dish.all after the 'get'...'do' we would be able to access @dishes in the erb view. For signup, it's not necessary, but if we wanted to display all the dishes beloning to a chef. We would need to make that data available often using a post as opposed to a get method. What is post? Briefly, you can think of post creates while get displays.
+The example of the view I provided is from a home page or view. If we look at the line `<a href="/signup">Sign Up</a>` navigates to	`get '/signup' do`... so we have one view calling the route method get `'/signup'`. Get in this case means that we are going to display something at `https://www.someaddress/signup`. What are we displaying? The signup page. This is represented by another view chefs/create_chef. By calling erb on that address we are saying go do this view, and bring with it any instantiated data from the controller route/action. So, for example, if we put `@dishes = Dish.all` after the `get...do` we would be able to access `@dishes` in the erb view. For signup, it's not necessary, but if we wanted to display all the dishes beloning to a chef. We would need to make that data available often using a post as opposed to a get method. What is post? Briefly, you can think of post creates while get displays.
 
 
 **What is Redirecting?**
 
-We saw with rendering that there is some navigation between routes and views. In the above example we can see some of that navigation. In the view example provided above, the ```<a href='/signup' ... ``` line is the link to the route example ```get '/signup'``` /signup to /signup. But look at the line after else ```redirect to '/dishes'```... hm couldn't we use erb to render the dishes page? Well, we could. Sure. Yeah. 
+We saw with rendering that there is some navigation between routes and views. In the above example we can see some of that navigation. In the view example provided above, the `<a href='/signup' ...` line is the link to the route example `get '/signup'` /signup to /signup. But look at the line after else `redirect to '/dishes'`... hm couldn't we use erb to render the dishes page? Well, we could. Sure. Yeah. 
 
 BUT here's why not.. we don't always want that instantiated data. What if we were going to another completely unrelated page? Do you want to bring all of that data with you? Nope.
 
-Redirect_to sends a new request to another URL without bringing along any instantiated variables created from the the controller route that is reqesting the redirect. It's essentially saying "OK we are done here leave everything behind and go to this new place". 
+`Redirect_to` sends a new request to another URL without bringing along any instantiated variables created from the the controller route that is reqesting the redirect. It's essentially saying "OK we are done here leave everything behind and go to this new place". 
 
 In very brief summary: Render keeps the data from the controller so you can access it in the view page your user requested. Redirect just goes to that next view without bringing data or variables defined in the controller.
 
